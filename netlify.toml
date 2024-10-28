@@ -2,9 +2,6 @@
   publish = ".next"
   command = "npm run build"
 
-[[plugins]]
-package = "/plugins/@netlify/plugin-dev-server"
-
 # Redirect with a 301
 [[redirects]]
 from = "/home"
