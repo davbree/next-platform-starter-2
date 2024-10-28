@@ -1,3 +1,70 @@
 [build]
   publish = ".next"
   command = "npm run build"
+
+[[plugins]]
+package = "/plugins/@netlify/plugin-dev-server"
+
+# Redirect with a 301
+[[redirects]]
+from = "/home"
+to = "/"
+status = 301
+
+# Redirect with a 302
+[[redirects]]
+from = "/my-redirect"
+to = "/"
+status = 302
+
+# Show a custom 404 for this path
+## !! not working
+[[redirects]]
+from = "/ecommerce"
+to = "/"
+status = 404
+
+# Rewrite a path
+## !! not working
+[[redirects]]
+from = "/pass-through"
+to = "/image-cdn"
+status = 200
+#force = true requires this for some reason???
+
+# Redirect with an existing page
+[[redirects]]
+from = "/test"
+to = "/"
+status = 200
+force = true
+
+[[redirects]]
+## !! not working
+from = "/go?page=*"
+to = "/:splat"
+
+[[redirects]]
+## !! not working
+from = "/go?page=:page"
+to = "/:page"
+
+[[redirects]]
+from = "/go/page/*"
+to = "/:splat"
+
+[[redirects]]
+from = "/go/:page"
+to = "/:page"
+
+## !! not working
+[[redirects]]
+from = "/*"
+to = "/legacy/:splat"
+status = 200
+conditions = {Cookie = ["is_legacy"]}
+
+[[redirects]]
+from = "/_next/*"
+to = "/bla"
+status = 200
