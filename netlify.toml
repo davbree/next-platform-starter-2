@@ -3,11 +3,6 @@
   command = "npm run build"
 
 
-[[redirects]]
-  from = "/revalidation/*"
-  to = "/resources/blog/?redirected=:splat"
-  status = 302
-  headers = {X-From = "Netlify-Test"}
 
 [[redirects]]
   from = "/revalidation2/*"
