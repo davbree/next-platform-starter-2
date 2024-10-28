@@ -63,5 +63,10 @@ conditions = {Cookie = ["is_legacy"]}
 
 [[redirects]]
 from = "/_next/*"
-to = "/bla"
+to = "/"
+status = 200
+
+[[redirects]]
+from = "/_next/static/chunks/main-app.js"
+to = "/"
 status = 200
