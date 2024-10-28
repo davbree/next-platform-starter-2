@@ -4,8 +4,13 @@
 
 
 [[redirects]]
-  from = "/classics/*"
-  to = "/image-cdn?q=:splat"
+  from = "/revalidation/*"
+  to = "/image-cdn"
+  status = 302
+
+[[redirects]]
+  from = "/classics"
+  to = "/image-cdn"
   status = 302
 
 [[redirects]]
