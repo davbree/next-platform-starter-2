@@ -4,7 +4,7 @@ export const metadata = {
 
 // This generates all the static pages at build time
 export async function generateStaticParams() {
-    return Array.from({ length: 100000 }, (_, i) => ({
+    return Array.from({ length: 20000 }, (_, i) => ({
         id: i.toString()
     }));
 }
