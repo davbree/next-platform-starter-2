@@ -1,7 +1,7 @@
 /  /anz     302  Country=au,nz
 # Redirect users in israel to /israel
 # doesn't work
-/  /israel  302  Country=il
+/country  /israel  302  Country=il
 
 /israel/*  /israel/he/:splat  302  Language=he
 
