@@ -1,7 +1,7 @@
 [build]
   publish = ".next"
   command = "npm run build"
-  ignore = ["c", "d"]
+  ignore = "d"
 
 [[redirects]]
   from = "/revalidation/*"
