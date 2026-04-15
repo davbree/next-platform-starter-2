@@ -4,13 +4,10 @@ import { RandomQuote } from 'components/random-quote';
 import { Markdown } from 'components/markdown';
 import { ContextAlert } from 'components/context-alert';
 import { getNetlifyContext } from 'utils';
-
-const cards = [
-    //{ text: 'Hello', linkText: 'someLink', href: '/' }
-];
+import { getPageContent, getContentFilePath } from 'utils/content';
 
 const contextExplainer = `
-The card below is rendered on the server based on the value of \`process.env.CONTEXT\` 
+The card below is rendered on the server based on the value of \`process.env.CONTEXT\`
 ([docs](https://docs.netlify.com/configure-builds/environment-variables/#build-metadata)):
 `;
 
@@ -28,17 +25,21 @@ And as always with dynamic content, beware of layout shifts & flicker! (here, we
 const ctx = getNetlifyContext();
 
 export default function Page() {
+    const content = getPageContent('index');
+    const contentFilePath = getContentFilePath('index');
+
     return (
-        <main className="flex flex-col gap-8 sm:gap-16">
+        <main className="flex flex-col gap-8 sm:gap-16" data-sb-object-id={contentFilePath}>
             <section className="flex flex-col items-start gap-3 sm:gap-4">
                 <ContextAlert />
-                <h1 className="mb-0">Netlify Platform Starter - Next.js</h1>
-                <p className="text-lg">Get started with Next.js and Netlify in seconds.</p>
+                <h1 className="mb-0" data-sb-field-path="sections.0.heading">{content.sections[0].heading}</h1>
+                <p className="text-lg" data-sb-field-path="sections.0.subheading">{content.sections[0].subheading}</p>
                 <Link
-                    href="https://docs.netlify.com/frameworks/next-js/overview/"
+                    href={content.sections[0].buttonUrl}
                     className="btn btn-lg btn-primary sm:btn-wide"
+                    data-sb-field-path="sections.0.buttonText"
                 >
-                    Read the Docs
+                    {content.sections[0].buttonText}
                 </Link>
             </section>
             {!!ctx && (
@@ -52,7 +53,27 @@ export default function Page() {
                 <RandomQuote />
                 <Markdown content={postDynamicContentExplainer} />
             </section>
-            {/* !!cards?.length && <CardsGrid cards={cards} /> */}
+            {content.sections[1]?.cards?.length > 0 && (
+                <section className="flex flex-col gap-4" data-sb-field-path="sections.1">
+                    {content.sections[1].heading && (
+                        <h2 className="text-2xl font-bold" data-sb-field-path=".heading">
+                            {content.sections[1].heading}
+                        </h2>
+                    )}
+                    <div className="grid gap-6 sm:grid-cols-3">
+                        {content.sections[1].cards.map((card, index) => (
+                            <div key={index} data-sb-field-path={`.cards.${index}`}>
+                                <Card
+                                    title={card.title}
+                                    text={card.text}
+                                    linkText={card.linkText}
+                                    href={card.href}
+                                />
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            )}
         </main>
     );
 }

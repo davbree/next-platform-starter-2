@@ -1,0 +1,42 @@
+{
+    "type": "Page",
+    "title": "Netlify Platform Starter - Next.js",
+    "description": "Get started with Next.js and Netlify in seconds.",
+    "slug": "index",
+    "sections": [
+        {
+            "type": "HeroSection",
+            "heading": "Netlify Platform Starter - Next.js",
+            "subheading": "Get started with Next.js and Netlify in seconds.",
+            "buttonText": "Read the Docs",
+            "buttonUrl": "https://docs.netlify.com/frameworks/next-js/overview/"
+        },
+        {
+            "type": "CardGridSection",
+            "heading": "Explore Platform Features",
+            "cards": [
+                {
+                    "type": "Card",
+                    "title": "Revalidation",
+                    "text": "Learn about on-demand revalidation with Next.js on Netlify.",
+                    "linkText": "Explore",
+                    "href": "/revalidation"
+                },
+                {
+                    "type": "Card",
+                    "title": "Image CDN",
+                    "text": "Optimize and transform images on the fly with Netlify Image CDN.",
+                    "linkText": "Explore",
+                    "href": "/image-cdn"
+                },
+                {
+                    "type": "Card",
+                    "title": "Edge Functions",
+                    "text": "Run server-side code at the edge for fast, personalized responses.",
+                    "linkText": "Explore",
+                    "href": "/edge"
+                }
+            ]
+        }
+    ]
+}
